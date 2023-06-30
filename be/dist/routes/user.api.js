@@ -3,46 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const userController_1 = require("../controllers/userController");
 const userRouter = (0, express_1.Router)();
-userRouter.get("/list", async (req, res) => {
-    const { success, data } = await (0, userController_1.readAllUsers)();
-    if (success) {
-        return res.json({ success, data });
-    }
-    return res.status(500).json({ success: false, messsage: "Error" });
-});
-userRouter.post("/add", async (req, res) => {
-    const { success, data } = await (0, userController_1.createOrUpdate)(req.body);
-    if (success) {
-        return res.json({ success, data });
-    }
-    return res.status(500).json({ success: false, message: "Error" });
-});
-userRouter.delete("/delete/:id", async (req, res) => {
-    const { id } = req.params;
-    const { success } = await (0, userController_1.deleteUserById)(id);
-    if (success) {
-        return res.json({ success });
-    }
-    return res.status(500).json({ success: false, message: "Error" });
-});
-userRouter.get("/byId/:id", async (req, res) => {
-    const { id } = req.params;
-    const { success, data } = await (0, userController_1.getUserById)(id);
-    if (success) {
-        return res.json({ success, data });
-    }
-    return res.status(500).json({ success: false, message: "Error" });
-});
-userRouter.put("/update/:id", async (req, res) => {
-    const user = req.body;
-    const { id } = req.params;
-    console.log("id", id);
-    user.id = id;
-    const { success, data } = await (0, userController_1.createOrUpdate)(user);
-    if (success) {
-        return res.json({ success, data });
-    }
-    return res.status(500).json({ success: false, message: "Error" });
-});
-// userRouter.post("/login", login);
+userRouter.get("/list", userController_1.getUser);
+userRouter.post("/add", userController_1.createUser);
+userRouter.delete("/delete/:id", userController_1.deleteUser);
+userRouter.get("/byId/:id", userController_1.getUserById);
+userRouter.put("/update/:id", userController_1.updateUser);
+userRouter.post("/login", userController_1.login);
 exports.default = userRouter;
