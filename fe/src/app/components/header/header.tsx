@@ -144,6 +144,14 @@ export default function Header(): JSX.Element {
                   Холбоо барих
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/login"
+                  className="block py-2 pl-3 pr-4 tablets:px-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
+                >
+                  Нэвтрэх
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

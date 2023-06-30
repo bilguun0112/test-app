@@ -1,4 +1,4 @@
-import AdminHeader from "../components/adminHeader/header";
+import AdminHeader from "@/app/components/adminHeader/header";
 
 export default function RootLayout({
   children,

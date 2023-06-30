@@ -7,9 +7,9 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { BiShow } from "react-icons/bi";
 import { BiHide } from "react-icons/bi";
-import { LoginContext } from "../context/context";
+import { LoginContext } from "@/app/context/context";
 
-const URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/login`;
+const URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/login`;
 
 export default function Signin(): JSX.Element {
   const { setLogin } = useContext(LoginContext);
@@ -21,27 +21,25 @@ export default function Signin(): JSX.Element {
   };
   async function handleSubmit(e: any) {
     e.preventDefault();
-    // const logInUser = {
-    //   email: e.target.email.value,
-    //   password: e.target.password.value,
-    // };
-    // try {
-    //   const response: AxiosResponse = await axios.post(URL, logInUser);
-    //   const data = response.data;
-    //   if (data.success === true) {
-    //     const userData = {
-    //       id: data.id,
-    //       token: data.token,
-    //     };
-    //     localStorage.setItem("data", JSON.stringify(userData));
-    //     setLogin(true);
-
-    //     router.push("/");
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    // }
-    console.log("login clicked");
+    const logInUser = {
+      email: e.target.email.value,
+      password: e.target.password.value,
+    };
+    try {
+      const response: AxiosResponse = await axios.post(URL, logInUser);
+      const data = response.data;
+      if (data.success === true) {
+        const userData = {
+          id: data.id,
+          token: data.token,
+        };
+        localStorage.setItem("data", JSON.stringify(userData));
+        setLogin(true);
+        router.push("/cargos");
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
   return (
     <div>
