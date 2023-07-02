@@ -3,6 +3,7 @@ import "./globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import Header from "../components/header/header";
+import { LoginProvider } from "../context/context";
 config.autoAddCss = false;
 
 export const metadata = {
@@ -15,14 +16,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
-      <nav>
-        <TopBar />
-        <Header />
-      </nav>
-      <main className=" w-full max-w-[1280px] px-5 md:px-10 mx-auto">
-        {children}
+    <LoginProvider>
+      <main>
+        <nav>
+          <TopBar />
+          <Header />
+        </nav>
+        <section className=" w-full max-w-[1280px] px-5 md:px-10 mx-auto">
+          {children}
+        </section>
       </main>
-    </div>
+    </LoginProvider>
   );
 }

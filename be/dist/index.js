@@ -9,6 +9,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 dotenv_1.default.config();
 const cors_1 = __importDefault(require("cors"));
 const user_api_1 = __importDefault(require("./routes/user.api"));
+const cargo_api_1 = __importDefault(require("./routes/cargo.api"));
 const app = (0, express_1.default)();
 const PORT = process.env.PORT;
 const MONGO_CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING;
@@ -16,6 +17,7 @@ let name = "<h1>Ecommerce backend</h1>";
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 app.use("/users", user_api_1.default);
+app.use("/cargos", cargo_api_1.default);
 app.get("/", (req, res) => {
     res.send(name);
 });

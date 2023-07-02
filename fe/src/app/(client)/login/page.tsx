@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import axios, { AxiosResponse } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -12,13 +12,16 @@ import { LoginContext } from "@/app/context/context";
 const URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/login`;
 
 export default function Signin(): JSX.Element {
-  const { setLogin } = useContext(LoginContext);
+  const { login, setLogin } = useContext(LoginContext);
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(true);
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
+  useEffect(() => {
+    console.log("login change", login);
+  }, [login]);
   async function handleSubmit(e: any) {
     e.preventDefault();
     const logInUser = {
@@ -102,7 +105,7 @@ export default function Signin(): JSX.Element {
                 >
                   Sign in
                 </button>
-                <p className="text-sm font-light text-gray-500">
+                {/* <p className="text-sm font-light text-gray-500">
                   Бүртгэл үүсгээгүй бол?{" "}
                   <Link
                     href="/register"
@@ -110,7 +113,7 @@ export default function Signin(): JSX.Element {
                   >
                     Бүртгүүлэх
                   </Link>
-                </p>
+                </p> */}
               </form>
             </div>
           </div>

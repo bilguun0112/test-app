@@ -5,6 +5,7 @@ dotenv.config();
 
 import cors from "cors";
 import userRouter from "./routes/user.api";
+import cargoRouter from "./routes/cargo.api";
 const app = express();
 const PORT = process.env.PORT;
 const MONGO_CONNECTION_STRING: any = process.env.MONGO_CONNECTION_STRING;
@@ -14,6 +15,7 @@ let name: string = "<h1>Ecommerce backend</h1>";
 app.use(express.json());
 app.use(cors());
 app.use("/users", userRouter);
+app.use("/cargos", cargoRouter);
 app.get("/", (req: Request, res: Response) => {
   res.send(name);
 });
