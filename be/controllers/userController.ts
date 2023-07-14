@@ -161,8 +161,6 @@ export const login = async (req: Request, res: Response) => {
       isMatch = await bcrypt.compare(password, user.password);
     }
 
-    console.log("ismatch = " + isMatch);
-
     if (user && isMatch) {
       const jwtBody = {
         user_id: user._id,
@@ -171,8 +169,10 @@ export const login = async (req: Request, res: Response) => {
       const token = jwt.sign(jwtBody, "Token send back", { expiresIn: "24h" });
       res.status(200).json({
         success: true,
+        email: user.email,
         id: user._id,
-        token: token,
+        sessionToken: token,
+        name: user.last_name,
       });
       return;
     } else {

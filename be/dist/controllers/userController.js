@@ -145,7 +145,6 @@ const login = async (req, res) => {
         if (user && user.password && password !== undefined) {
             isMatch = await bcrypt_1.default.compare(password, user.password);
         }
-        console.log("ismatch = " + isMatch);
         if (user && isMatch) {
             const jwtBody = {
                 user_id: user._id,
@@ -154,8 +153,10 @@ const login = async (req, res) => {
             const token = jsonwebtoken_1.default.sign(jwtBody, "Token send back", { expiresIn: "24h" });
             res.status(200).json({
                 success: true,
+                email: user.email,
                 id: user._id,
-                token: token,
+                sessionToken: token,
+                name: user.last_name,
             });
             return;
         }

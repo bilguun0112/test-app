@@ -1,7 +1,6 @@
 "use client";
 
 import ViewModal from "@/app/components/viewModal";
-import axios, { AxiosResponse } from "axios";
 import React, { useEffect, useState } from "react";
 
 export default function MainPage(): JSX.Element {
@@ -10,8 +9,8 @@ export default function MainPage(): JSX.Element {
 
   async function getData() {
     try {
-      const response: AxiosResponse = await axios.get(URL);
-      const data = response.data;
+      const res = await fetch(URL);
+      const data = await res.json();
       if (data.success === true) {
         setCargoData(data.data);
       }
@@ -21,7 +20,6 @@ export default function MainPage(): JSX.Element {
   }
   useEffect(() => {
     getData();
-    console.log(cargoData);
   }, []);
   const getList =
     Array.isArray(cargoData) &&
@@ -53,40 +51,41 @@ export default function MainPage(): JSX.Element {
     });
   return (
     <div>
-      <h1 className="text-[32px] py-5">Ачааны бүртгэлийн жагсаалт</h1>
-
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table className="w-full text-sm text-left text-gray-500 ">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">
-            <tr>
-              <th scope="col" className="px-3 py-1">
-                Ачааны код
-              </th>
-              <th scope="col" className="px-3 py-3">
-                Хүлээн авагч
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Хүлээн авагч дугаар
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Тайлбар
-              </th>
-              <th scope="col" className="px-3 py-3">
-                Төлбөр
-              </th>
-              <th scope="col" className="px-1 py-3">
-                Үлдэгдэл
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Ажилтан
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Үйлдэл
-              </th>
-            </tr>
-          </thead>
-          <tbody>{getList}</tbody>
-        </table>
+      <div>
+        <h1 className="text-[32px] py-5">Ачааны бүртгэлийн жагсаалт</h1>
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <table className="w-full text-sm text-left text-gray-500 ">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">
+              <tr>
+                <th scope="col" className="px-3 py-1">
+                  Ачааны код
+                </th>
+                <th scope="col" className="px-3 py-3">
+                  Хүлээн авагч
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Хүлээн авагч дугаар
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Тайлбар
+                </th>
+                <th scope="col" className="px-3 py-3">
+                  Төлбөр
+                </th>
+                <th scope="col" className="px-1 py-3">
+                  Үлдэгдэл
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Ажилтан
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Үйлдэл
+                </th>
+              </tr>
+            </thead>
+            <tbody>{getList}</tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

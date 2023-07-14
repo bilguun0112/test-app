@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import SignInButton from "../SignInButton";
 
 export default function AdminHeader(): JSX.Element {
   return (
@@ -22,12 +24,7 @@ export default function AdminHeader(): JSX.Element {
             </Link>
           </li>
           <li>
-            <Link
-              href="/cargos/admin"
-              className="block text-[24px] py-5 pl-3 pr-4  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
-            >
-              Админ
-            </Link>
+            <SignInButton />
           </li>
         </ul>
       </nav>

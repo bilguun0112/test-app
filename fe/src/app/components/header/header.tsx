@@ -5,6 +5,7 @@ import { FaAngleDown } from "react-icons/fa";
 import { HiX } from "react-icons/hi";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import SignInButton from "../SignInButton";
 
 export default function Header(): JSX.Element {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -151,6 +152,9 @@ export default function Header(): JSX.Element {
                 >
                   Админ
                 </Link>
+              </li>
+              <li>
+                <SignInButton />
               </li>
             </ul>
           </div>

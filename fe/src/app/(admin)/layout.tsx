@@ -1,12 +1,13 @@
-import TopBar from "../components/header/topbar";
+import AdminHeader from "../components/adminHeader/header";
+
 import "./globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import Header from "../components/header/header";
+import React from "react";
 config.autoAddCss = false;
 
 export const metadata = {
-  title: "Cargo website",
+  title: "Cargo's admin",
 };
 
 export default function RootLayout({
@@ -17,12 +18,11 @@ export default function RootLayout({
   return (
     <div>
       <nav>
-        <TopBar />
-        <Header />
+        <AdminHeader />
       </nav>
-      <section className=" w-full max-w-[1280px] px-5 md:px-10 mx-auto">
+      <main className=" w-full max-w-[1280px] px-5 md:px-10 mx-auto">
         {children}
-      </section>
+      </main>
     </div>
   );
 }
