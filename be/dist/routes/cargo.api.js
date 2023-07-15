@@ -8,4 +8,5 @@ cargoRouter.post("/add", cargoController_1.createCargo);
 cargoRouter.delete("/delete/:id", cargoController_1.deleteCargo);
 cargoRouter.get("/byId/:id", cargoController_1.getCargoById);
 cargoRouter.put("/update/:id", cargoController_1.updateCargo);
+cargoRouter.get("/search", cargoController_1.getCargoByOrderNum);
 exports.default = cargoRouter;

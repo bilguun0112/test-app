@@ -5,6 +5,7 @@ import {
   deleteCargo,
   getCargo,
   getCargoById,
+  getCargoByOrderNum,
   updateCargo,
 } from "../controllers/cargoController";
 
@@ -15,4 +16,5 @@ cargoRouter.post("/add", createCargo);
 cargoRouter.delete("/delete/:id", deleteCargo);
 cargoRouter.get("/byId/:id", getCargoById);
 cargoRouter.put("/update/:id", updateCargo);
+cargoRouter.get("/search", getCargoByOrderNum);
 export default cargoRouter;

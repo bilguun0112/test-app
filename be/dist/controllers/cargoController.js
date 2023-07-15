@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateCargo = exports.deleteCargo = exports.getCargoById = exports.getCargo = exports.createCargo = void 0;
+exports.getCargoByOrderNum = exports.updateCargo = exports.deleteCargo = exports.getCargoById = exports.getCargo = exports.createCargo = void 0;
 const cargo_model_1 = __importDefault(require("../models/cargo.model"));
 const createCargo = async (req, res) => {
     const data = req.body;
@@ -115,3 +115,28 @@ const updateCargo = async (req, res) => {
     }
 };
 exports.updateCargo = updateCargo;
+const getCargoByOrderNum = async (req, res) => {
+    const { term } = req.query;
+    try {
+        const cargo = await cargo_model_1.default.find({
+            order_number: { $regex: new RegExp(String(term), "i") },
+        });
+        console.log(cargo);
+        if (cargo.length === 0) {
+            res.status(400).json({
+                success: false,
+                message: "Таны оруулсан ачааны код буруу эсвэл бүртгэлгүй байна",
+            });
+        }
+        else {
+            res.status(200).json({
+                success: true,
+                data: cargo[0],
+            });
+        }
+    }
+    catch (error) {
+        res.status(404).json(error);
+    }
+};
+exports.getCargoByOrderNum = getCargoByOrderNum;

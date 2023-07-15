@@ -124,3 +124,26 @@ export const updateCargo = async (req: Request, res: Response) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
+export const getCargoByOrderNum = async (req: Request, res: Response) => {
+  const { term } = req.query;
+  try {
+    const cargo = await CargoModel.find({
+      order_number: { $regex: new RegExp(String(term), "i") },
+    });
+    console.log(cargo);
+    if (cargo.length === 0) {
+      res.status(400).json({
+        success: false,
+        message: "Таны оруулсан ачааны код буруу эсвэл бүртгэлгүй байна",
+      });
+    } else {
+      res.status(200).json({
+        success: true,
+        data: cargo[0],
+      });
+    }
+  } catch (error) {
+    res.status(404).json(error);
+  }
+};

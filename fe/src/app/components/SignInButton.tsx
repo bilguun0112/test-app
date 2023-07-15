@@ -3,7 +3,7 @@ import React from "react";
 
 export default function SignInButton() {
   const { data: session } = useSession();
-  console.log(session?.user);
+  // console.log(session?.user);
   if (session && session.user) {
     return (
       <div className="flex gap-4 ml-auto">
