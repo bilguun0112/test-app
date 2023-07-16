@@ -1,12 +1,13 @@
 "use client";
 
 import ViewModal from "@/app/components/viewModal";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 export default function MainPage(): JSX.Element {
   const URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/cargos/list`;
   const [cargoData, setCargoData] = useState({});
-
+  const router = useRouter();
   async function getData() {
     try {
       const res = await fetch(URL);
@@ -24,6 +25,7 @@ export default function MainPage(): JSX.Element {
   const getList =
     Array.isArray(cargoData) &&
     cargoData.map((d, idx) => {
+      console.log(d);
       return (
         <tr className="bg-white border-b" key={idx}>
           <th
@@ -41,7 +43,10 @@ export default function MainPage(): JSX.Element {
           <td className="px-6 py-4">
             <div className="flex gap-4">
               <ViewModal cargos={d} />
-              <button className="font-medium text-blue-600  hover:underline">
+              <button
+                className="font-medium text-blue-600  hover:underline"
+                onClick={() => router.push(`cargos/edit/${d._id}`)}
+              >
                 Засах
               </button>
             </div>

@@ -50,7 +50,9 @@ export const getCargo = async (req: Request, res: Response) => {
 export const getCargoById = async (req: Request, res: Response) => {
   try {
     const cargo = await CargoModel.findOne({ _id: req.params.id });
-    res.status(200).json(cargo);
+    if (cargo) {
+      res.status(200).json({ success: true, data: cargo });
+    }
   } catch (error) {
     res.status(404).json(error);
   }

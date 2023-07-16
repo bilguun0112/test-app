@@ -1,11 +1,11 @@
 "use client";
 import ResultTable from "@/app/components/result";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function TrackingPage(): JSX.Element {
   const [term, setTerm] = useState("");
-  const [show, setShow] = useState(false);
-  const [result, setResult] = useState({});
+  const [result, setResult] = useState(null);
+  const [warning, setWarning] = useState(null);
   const URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/cargos/search?term=${term}`;
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -13,13 +13,21 @@ export default function TrackingPage(): JSX.Element {
     const data = await response.json();
     if (data.success) {
       setResult(data.data);
-      setShow(data.success);
+    } else {
+      setResult(null);
+      setWarning(data.message);
     }
     console.log("result", data);
   };
+  useEffect(() => {
+    if (term === "") {
+      setResult(null);
+      setWarning(null);
+    }
+  }, [term]);
   return (
     <div>
-      <div className="pt-10 w-full md:w-1/2 mx-auto">
+      <div className="pt-20 w-full md:w-1/2 mx-auto">
         <form onSubmit={handleSubmit}>
           <label
             htmlFor="default-search"
@@ -62,7 +70,15 @@ export default function TrackingPage(): JSX.Element {
           </div>
         </form>
       </div>
-      <ResultTable data={result} show={show} />
+
+      <ResultTable data={result} />
+      {warning ? (
+        <div className="text-xl mt-8 text-center">
+          Ачааны мэдээлэл олдсонгүй, та оруулсан кодоо шалгана уу{" "}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

@@ -153,9 +153,6 @@ export default function Header(): JSX.Element {
                   Админ
                 </Link>
               </li>
-              <li>
-                <SignInButton />
-              </li>
             </ul>
           </div>
         </div>

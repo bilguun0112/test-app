@@ -11,6 +11,10 @@ module.exports = {
       'half': { 'min': '640px', 'max': '661px' },
       'tablets': { 'min': '768px', 'max': '836px' }
     },
+    gridTemplateColumns: {
+      sidebar: "250px auto", //for sidebar layout
+      "sidebar-collapsed": "64px auto", //for sidebar layout
+    },
   },
   plugins: [],
 }

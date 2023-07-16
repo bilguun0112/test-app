@@ -1,13 +1,5 @@
-export default function ResultTable({ data, show }: any) {
-  if (show === false) {
-    return (
-      <div className="text-xl mt-8 text-center">
-        Ачааны мэдээлэл олдсонгүй, та оруулсан кодоо шалгана уу
-      </div>
-    );
-  }
-
-  if (show === true) {
+export default function ResultTable({ data }: any) {
+  if (data) {
     return (
       <div className="border mt-8 rounded-lg border-gray-600 w-full md:w-1/2 mx-auto">
         <div className="py-3 ml-5 text-base">Ачааны мэдээлэл</div>

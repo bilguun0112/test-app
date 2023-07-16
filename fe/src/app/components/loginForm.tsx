@@ -4,11 +4,9 @@ import { useState } from "react";
 import { BiShow } from "react-icons/bi";
 import { BiHide } from "react-icons/bi";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(true);
-  const router = useRouter();
   const [error, setError] = useState(false);
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -18,11 +16,10 @@ export default function LoginForm() {
     const res = await signIn("credentials", {
       email: e.target.email.value,
       password: e.target.password.value,
-      redirect: false,
+      callbackUrl: "/cargos",
     });
     console.log(res);
     if (res?.error) return setError(true);
-    router.replace("/cargos");
   }
   return (
     <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>

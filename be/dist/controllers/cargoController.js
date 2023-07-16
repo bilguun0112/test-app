@@ -56,7 +56,9 @@ exports.getCargo = getCargo;
 const getCargoById = async (req, res) => {
     try {
         const cargo = await cargo_model_1.default.findOne({ _id: req.params.id });
-        res.status(200).json(cargo);
+        if (cargo) {
+            res.status(200).json({ success: true, data: cargo });
+        }
     }
     catch (error) {
         res.status(404).json(error);

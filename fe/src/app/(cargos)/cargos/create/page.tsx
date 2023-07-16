@@ -1,25 +1,13 @@
 "use client";
 
+import paymentMethods from "@/lib/documents/paymentMethod";
 import axios, { AxiosResponse } from "axios";
 import React, { useState } from "react";
 
 export default function CreateOrder(): JSX.Element {
   const URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/cargos/add`;
   const [result, setResult] = useState("");
-  const paymentMethods = [
-    {
-      id: 1,
-      method: "Бэлэн",
-    },
-    {
-      id: 2,
-      method: "Данс",
-    },
-    {
-      id: 3,
-      method: "Монголд",
-    },
-  ];
+
   const [value, setValue] = useState("");
   const handleChange = (event: any) => {
     setValue(event.target.value);
@@ -70,17 +58,14 @@ export default function CreateOrder(): JSX.Element {
   return (
     <div>
       <section className="bg-gray-50">
-        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto  md:h-screen lg:py-0">
-          {/* <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0"> */}
+        <div className="flex flex-col items-center justify-center p-0 md:px-5 mx-auto  md:h-screen lg:py-0">
           <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-3xl xl:p-0">
-            {/* <div className="p-6 space-y-4 md:space-y-6 sm:p-8"> */}
-            <div className="p-2 space-y-4 md:space-y-6 sm:p-2">
+            <div className="p-1 space-y-4 md:space-y-6 sm:p-2">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                 Ачаа бүртгэх
               </h1>
-              {/* <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}> */}
               <form onSubmit={handleSubmit}>
-                <div className="w-1/2 mb-4 pr-[16px]">
+                <div className="w-full md:w-1/2 mb-4 pr-[16px]">
                   <label
                     htmlFor="orderNumber"
                     className="block mb-2 text-sm font-medium text-gray-900"
@@ -97,8 +82,8 @@ export default function CreateOrder(): JSX.Element {
                   />
                 </div>
                 <div className="flex flex-col gap-3">
-                  <div className="flex justify-between gap-8">
-                    <div className=" w-full">
+                  <div className="md:flex justify-between gap-8">
+                    <div className="w-full">
                       <label
                         htmlFor="sender"
                         className="block mb-2 text-sm font-medium text-gray-900"
@@ -131,7 +116,7 @@ export default function CreateOrder(): JSX.Element {
                       />
                     </div>
                   </div>
-                  <div className="flex justify-between gap-8">
+                  <div className="md:flex justify-between gap-8">
                     <div className="w-full">
                       <label
                         htmlFor="receiver"
@@ -211,7 +196,7 @@ export default function CreateOrder(): JSX.Element {
                       />
                     </div>
                   </div>
-                  <div className="flex justify-between gap-8">
+                  <div className="md:flex justify-between gap-8">
                     <div className="w-full">
                       <label
                         htmlFor="cargoOrder"
@@ -244,20 +229,7 @@ export default function CreateOrder(): JSX.Element {
                     </div>
                   </div>
                   <div className="flex gap-8">
-                    <div className="w-1/2 mb-4 pr-[16px]">
-                      {/* <label
-                        htmlFor="paymentMethod"
-                        className="block mb-2 text-sm font-medium text-gray-900"
-                      >
-                        Төлбөрийн хэлбэр :
-                      </label>
-                      <input
-                        type="text"
-                        name="paymentMethod"
-                        id="paymentMethod"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  focus:border-primary-200 focus:border-5 block w-full p-2.5"
-                        placeholder="Төлбөрийн хэлбэр"
-                      /> */}
+                    <div className="w-full sm:w-1/2 mb-4 pr-[16px]">
                       <label
                         htmlFor="paymentMethod"
                         className="block mb-2 text-sm font-medium text-gray-900"
