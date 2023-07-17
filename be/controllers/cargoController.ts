@@ -38,7 +38,7 @@ export const createCargo = async (req: Request, res: Response) => {
 
 export const getCargo = async (req: Request, res: Response) => {
   try {
-    const cargo = await CargoModel.find({});
+    const cargo = await CargoModel.find({}).populate("admin_id", "first_name");
     if (cargo) {
       res.status(201).json({ success: true, data: cargo });
     }
@@ -59,16 +59,14 @@ export const getCargoById = async (req: Request, res: Response) => {
 };
 
 export const deleteCargo = async (req: Request, res: Response) => {
-  const id = req.body.id;
-  console.log("Deleting Cargos");
-  console.log(id);
+  const { id } = req.params;
+  console.log("Deleting Cargos", id);
   try {
     await CargoModel.deleteOne({ _id: id });
-    const cargos = await CargoModel.find();
     res.status(201).json({
       success: true,
       message: "Successfully Deleted",
-      data: cargos,
+      // data: cargos,
     });
   } catch (error) {
     res.status(404).json(error);
@@ -90,7 +88,7 @@ export const updateCargo = async (req: Request, res: Response) => {
     cargo_weight,
     first_payment,
     last_payment,
-    sending_city,
+    payment_method,
   } = req.body; // Get updated data from request body
   console.log(req.body);
 
@@ -109,18 +107,24 @@ export const updateCargo = async (req: Request, res: Response) => {
         cargo_weight,
         first_payment,
         last_payment,
-        sending_city,
+        payment_method,
       },
       { new: true }
     );
 
     if (!updatedcargo) {
       // If cargo not found, return an error response
-      return res.status(404).json({ message: "cargo not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Бүртгэл засахад алдаа гарлаа" });
     }
 
     // If cargo found and updated successfully, return a success response
-    return res.status(200).json({ data: updatedcargo });
+    return res.status(200).json({
+      success: true,
+      data: updatedcargo,
+      message: "Бүртгэл амжилттай шинэчлэгдлээ",
+    });
   } catch (error) {
     // If an error occurs, return an error response
     return res.status(500).json({ message: "Internal Server Error" });

@@ -37,6 +37,9 @@ const CargoSchema = new mongoose_1.Schema({
     last_payment: String,
     registration_date: String,
     payment_method: String,
+    start_date: String,
+    end_date: String,
+    admin_id: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
 });
 const CargoModel = mongoose_1.default.model("Cargo", CargoSchema);
 exports.default = CargoModel;

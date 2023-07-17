@@ -43,7 +43,7 @@ const createCargo = async (req, res) => {
 exports.createCargo = createCargo;
 const getCargo = async (req, res) => {
     try {
-        const cargo = await cargo_model_1.default.find({});
+        const cargo = await cargo_model_1.default.find({}).populate("admin_id", "first_name");
         if (cargo) {
             res.status(201).json({ success: true, data: cargo });
         }
@@ -66,16 +66,14 @@ const getCargoById = async (req, res) => {
 };
 exports.getCargoById = getCargoById;
 const deleteCargo = async (req, res) => {
-    const id = req.body.id;
-    console.log("Deleting Cargos");
-    console.log(id);
+    const { id } = req.params;
+    console.log("Deleting Cargos", id);
     try {
         await cargo_model_1.default.deleteOne({ _id: id });
-        const cargos = await cargo_model_1.default.find();
         res.status(201).json({
             success: true,
             message: "Successfully Deleted",
-            data: cargos,
+            // data: cargos,
         });
     }
     catch (error) {
@@ -87,7 +85,7 @@ exports.deleteCargo = deleteCargo;
 const updateCargo = async (req, res) => {
     const { id } = req.params; // Get the cargo ID from request parameters
     console.log(id);
-    let { order_number, sender, sender_number, receiver, receiver_number, cargo_note, cargo_count, cargo_weight, first_payment, last_payment, sending_city, } = req.body; // Get updated data from request body
+    let { order_number, sender, sender_number, receiver, receiver_number, cargo_note, cargo_count, cargo_weight, first_payment, last_payment, payment_method, } = req.body; // Get updated data from request body
     console.log(req.body);
     try {
         // Find the cargo by ID and update its name and status
@@ -102,14 +100,20 @@ const updateCargo = async (req, res) => {
             cargo_weight,
             first_payment,
             last_payment,
-            sending_city,
+            payment_method,
         }, { new: true });
         if (!updatedcargo) {
             // If cargo not found, return an error response
-            return res.status(404).json({ message: "cargo not found" });
+            return res
+                .status(404)
+                .json({ success: false, message: "Бүртгэл засахад алдаа гарлаа" });
         }
         // If cargo found and updated successfully, return a success response
-        return res.status(200).json({ data: updatedcargo });
+        return res.status(200).json({
+            success: true,
+            data: updatedcargo,
+            message: "Бүртгэл амжилттай шинэчлэгдлээ",
+        });
     }
     catch (error) {
         // If an error occurs, return an error response

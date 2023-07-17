@@ -43,7 +43,7 @@ export default function AdminSideBar({ navItems = defaultNavItems }) {
           "bg-indigo-700 h-screen text-zinc-50 fixed md:static md:translate-x-0 z-20":
             true,
           "transition-all duration-300 ease-in-out": true,
-          "w-[300px]": !collapsed,
+          "w-[230px]": !collapsed,
           "w-16": collapsed,
           "-translate-x-full": !shown,
         })}

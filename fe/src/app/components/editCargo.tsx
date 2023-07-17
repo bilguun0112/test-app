@@ -2,25 +2,27 @@
 
 import paymentMethods from "@/lib/documents/paymentMethod";
 import React, { useState } from "react";
-interface IData {
-  _id: string;
-  order_number: string | null;
-  sender: string | null;
-  sender_number: string | null;
-  receiver: string | null;
-  receiver_number: string | null;
-  cargo_note: string | null;
-  cargo_count: string | null;
-  cargo_weight: string | null;
-  first_payment: string | null;
-  last_payment: string | null;
-  payment_method: string;
-  registration_date: Date;
-}
+
 export default function EditCargo({ data }: any): JSX.Element {
   const URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/cargos/update/${data._id}`;
-  const [userData, setUserData] = useState({});
   const [value, setValue] = useState("");
+
+  const initialData = {
+    order_number: "",
+    sender: "",
+    sender_number: "",
+    receiver: "",
+    receiver_number: "",
+    cargo_note: "",
+    cargo_count: "",
+    cargo_weight: "",
+    first_payment: "",
+    last_payment: "",
+    payment_method: "",
+    registration_date: "",
+  };
+  const [userData, setUserData] = useState(initialData);
+
   const handleChange = (event: any) => {
     setValue(event.target.value);
   };

@@ -2,12 +2,13 @@
 
 import paymentMethods from "@/lib/documents/paymentMethod";
 import axios, { AxiosResponse } from "axios";
+import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 
 export default function CreateOrder(): JSX.Element {
   const URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/cargos/add`;
+  const { data: session } = useSession();
   const [result, setResult] = useState("");
-
   const [value, setValue] = useState("");
   const handleChange = (event: any) => {
     setValue(event.target.value);
@@ -43,7 +44,11 @@ export default function CreateOrder(): JSX.Element {
       last_payment: e.target.cargoPayment.value,
       payment_method: value,
       registration_date: formattedDateString,
+      admin_id: session?.user.id,
+      start_date: e.target.start.value,
+      end_date: e.target.end.value,
     };
+    // console.log(formData);
     try {
       const response: AxiosResponse = await axios.post(URL, formData);
       const createdCargo = response.data;
@@ -229,7 +234,7 @@ export default function CreateOrder(): JSX.Element {
                     </div>
                   </div>
                   <div className="flex gap-8">
-                    <div className="w-full sm:w-1/2 mb-4 pr-[16px]">
+                    <div className="w-full sm:w-1/2  pr-[16px]">
                       <label
                         htmlFor="paymentMethod"
                         className="block mb-2 text-sm font-medium text-gray-900"
@@ -254,16 +259,49 @@ export default function CreateOrder(): JSX.Element {
                       </select>
                     </div>
                   </div>
+                  <div className="flex justify-between gap-8 pb-4">
+                    <div className="w-full">
+                      <label
+                        htmlFor="startDate"
+                        className="block mb-2 text-sm font-medium text-gray-900"
+                      >
+                        Ачаа гарах :
+                      </label>
+                      <input
+                        name="start"
+                        id="start"
+                        type="date"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full pl-10 p-2.5  "
+                        placeholder="Ачаа гарах"
+                        datepicker-autohide
+                      />
+                    </div>
+                    <div className="w-full">
+                      <label
+                        htmlFor="endDate"
+                        className="block mb-2 text-sm font-medium text-gray-900"
+                      >
+                        Монголд буух :
+                      </label>
+                      <input
+                        name="end"
+                        type="date"
+                        id="end"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full pl-10 p-2.5  "
+                        placeholder="Монголд буух"
+                      />
+                    </div>
+                  </div>
                 </div>
 
-                <div>
+                <div className="flex gap-10 items-center">
                   <button
                     type="submit"
                     className=" text-white bg-emerald-600 hover:bg-emerald-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                   >
                     Бүртгэл үүсгэх
                   </button>
-                  <div>{result}</div>
+                  <div className="text-green-600">{result}</div>
                 </div>
               </form>
             </div>
