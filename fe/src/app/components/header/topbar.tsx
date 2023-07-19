@@ -9,9 +9,9 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import "./style.css";
 export default function TopBar(): JSX.Element {
   return (
-    <div className="bg-[#344877] py-1 w-screen">
+    <div className="bg-[#eeeeee] py-1 w-screen">
       <div className=" w-full max-w-[1280px] px-5 md:px-10 mx-auto flex md:justify-between max-h-8">
-        <div className="flex items-center text-gray-500 text-[14px]">
+        <div className="flex items-center text-[#666666] text-[14px]">
           <Link
             href="https://www.facebook.com/"
             target="_blank"

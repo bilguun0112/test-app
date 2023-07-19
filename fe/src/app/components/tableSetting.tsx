@@ -15,6 +15,7 @@ export default function TableSetting({
   const handlePaymentCheckboxChange = () => {
     setPayment((prevChecked: boolean) => !prevChecked);
   };
+
   const handleToggleModal = () => {
     setShowModal(!showModal);
   };
@@ -22,7 +23,7 @@ export default function TableSetting({
     <div className="relative">
       <button
         onClick={handleToggleModal}
-        className="text-indigo-100 hover:bg-indigo-900 transition-colors duration-200 rounded-md p-2 mx-3"
+        className="text-indigo-600 hover:bg-indigo-900 hover:text-indigo-100 transition-colors duration-200 rounded-md p-2 mx-3"
       >
         <IoSettingsOutline className="w-6 h-6" />
       </button>

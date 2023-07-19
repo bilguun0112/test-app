@@ -134,7 +134,7 @@ export default function CreateOrder(): JSX.Element {
                         name="receiver"
                         id="receiver"
                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  focus:border-primary-200 focus:border-5 block w-full p-2.5"
-                        placeholder="Wick"
+                        placeholder="Хүлээн авагч"
                         required
                       />
                     </div>
@@ -150,7 +150,7 @@ export default function CreateOrder(): JSX.Element {
                         name="receiverNumber"
                         id="receiverNumber"
                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  focus:border-primary-200 focus:border-5 block w-full p-2.5"
-                        placeholder="Wick"
+                        placeholder="9999-9999"
                         required
                       />
                     </div>
@@ -190,7 +190,7 @@ export default function CreateOrder(): JSX.Element {
                         htmlFor="cargoWeight"
                         className="block mb-2 text-sm font-medium text-gray-900"
                       >
-                        Ачааны жин :
+                        Ачааны жин (кг):
                       </label>
                       <input
                         type="text"
@@ -207,7 +207,7 @@ export default function CreateOrder(): JSX.Element {
                         htmlFor="cargoOrder"
                         className="block mb-2 text-sm font-medium text-gray-900"
                       >
-                        Тооцоо :
+                        Тооцоо (&#x20A9;):
                       </label>
                       <input
                         type="text"
@@ -222,7 +222,7 @@ export default function CreateOrder(): JSX.Element {
                         htmlFor="cargoPayment"
                         className="block mb-2 text-sm font-medium text-gray-900"
                       >
-                        Үлдэгдэл төлбөр :
+                        Үлдэгдэл төлбөр (&#x20A9;):
                       </label>
                       <input
                         type="text"
@@ -273,7 +273,6 @@ export default function CreateOrder(): JSX.Element {
                         type="date"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full pl-10 p-2.5  "
                         placeholder="Ачаа гарах"
-                        datepicker-autohide
                       />
                     </div>
                     <div className="w-full">

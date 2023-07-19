@@ -14,6 +14,8 @@ const initialData = {
   last_payment: "",
   payment_method: "",
   registration_date: "",
+  start_date: "",
+  end_date: "",
 };
 export default function Page({ params }: { params: any }) {
   const URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/cargos/byId/${params.id}`;
@@ -37,6 +39,7 @@ export default function Page({ params }: { params: any }) {
   const handleChange = (event: any) => {
     setValue(event.target.value);
   };
+  console.log(userData);
   const paymentMethod =
     Array.isArray(paymentMethods) &&
     paymentMethods.map((p, idx) => (
@@ -306,7 +309,7 @@ export default function Page({ params }: { params: any }) {
                 </div>
               </div>
               <div className="flex gap-8">
-                <div className="w-full sm:w-1/2 mb-4 pr-[16px]">
+                <div className="w-full sm:w-1/2 pr-[16px]">
                   <label
                     htmlFor="paymentMethod"
                     className="block mb-2 text-sm font-medium text-gray-900"
@@ -325,6 +328,52 @@ export default function Page({ params }: { params: any }) {
                     </option>
                     {paymentMethod}
                   </select>
+                </div>
+              </div>
+              <div className="flex justify-between gap-8 pb-4">
+                <div className="w-full">
+                  <label
+                    htmlFor="startDate"
+                    className="block mb-2 text-sm font-medium text-gray-900"
+                  >
+                    Ачаа гарах :
+                  </label>
+                  <input
+                    name="start"
+                    id="start"
+                    type="date"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full pl-10 p-2.5  "
+                    placeholder="Ачаа гарах"
+                    // value={userData?.start_date}
+                    onChange={(e) => {
+                      setUserData({
+                        ...userData,
+                        start_date: e.target.value,
+                      });
+                    }}
+                  />
+                </div>
+                <div className="w-full">
+                  <label
+                    htmlFor="endDate"
+                    className="block mb-2 text-sm font-medium text-gray-900"
+                  >
+                    Монголд буух :
+                  </label>
+                  <input
+                    name="end"
+                    type="date"
+                    id="end"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full pl-10 p-2.5  "
+                    placeholder="Монголд буух"
+                    // value={userData?.end_date}
+                    onChange={(e) => {
+                      setUserData({
+                        ...userData,
+                        end_date: e.target.value,
+                      });
+                    }}
+                  />
                 </div>
               </div>
             </div>

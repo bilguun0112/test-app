@@ -20,9 +20,8 @@ export default function RootLayout({
         <TopBar />
         <Header />
       </nav>
-      <section className=" w-full max-w-[1280px] px-5 md:px-10 mx-auto">
-        {children}
-      </section>
+      {/* <section className=" w-full max-w-[1280px] px-5 md:px-10 mx-auto"> */}
+      <section className=" w-full">{children}</section>
     </div>
   );
 }

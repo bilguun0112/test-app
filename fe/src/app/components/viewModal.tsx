@@ -25,11 +25,11 @@ export default function ViewModal({ cargos }: any) {
       {/* Modal */}
       {showModal && (
         <div className="fixed top-5 left-0 right-0 bottom-0 flex items-center justify-center bg-opacity-50">
-          <div className="bg-[#fafeff] rounded-lg shadow-lg p-4 mx-3 sm:mx-0 sm:p-8 w-full sm:w-1/3">
+          <div className="bg-[#fafeff] rounded-lg shadow-lg p-4 mx-3 sm:mx-0 sm:p-8 w-full sm:w-2/4">
             <div className="flex justify-between mb-5">
               <div className="text-[24px]">Барааны мэдээлэл</div>
               <button onClick={closeModal}>
-                <HiX />
+                <HiX className="text-black" />
               </button>
             </div>
 
@@ -122,6 +122,22 @@ export default function ViewModal({ cargos }: any) {
                   <td className="border border-slate-600 pl-2 py-1">Огноо</td>
                   <td className="border border-slate-600 pl-2 py-1">
                     {cargos.registration_date}
+                  </td>
+                </tr>
+                <tr>
+                  <td className="border border-slate-600 pl-2 py-1">
+                    Ачаа гарах
+                  </td>
+                  <td className="border border-slate-600 pl-2 py-1">
+                    {cargos.start_date}
+                  </td>
+                </tr>
+                <tr>
+                  <td className="border border-slate-600 pl-2 py-1">
+                    Монголд буух
+                  </td>
+                  <td className="border border-slate-600 pl-2 py-1">
+                    {cargos.end_date}
                   </td>
                 </tr>
               </tbody>

@@ -56,7 +56,9 @@ exports.getUser = getUser;
 const getUserById = async (req, res) => {
     try {
         const user = await user_model_1.default.findOne({ _id: req.params.id });
-        res.status(200).json(user);
+        if (user) {
+            res.status(200).json({ success: true, data: user });
+        }
     }
     catch (error) {
         res.status(404).json(error);

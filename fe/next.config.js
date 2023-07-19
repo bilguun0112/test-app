@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    // preload: false,
     reactStrictMode: true,
     swcMinify: true,
     experimental: {
@@ -8,6 +9,7 @@ const nextConfig = {
     images: {
         domains: ["images.unsplash.com", "via.placeholder.com"],
     },
+
 };
 
 module.exports = nextConfig;

@@ -5,43 +5,21 @@ import { FaAngleDown } from "react-icons/fa";
 import { HiX } from "react-icons/hi";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import SignInButton from "../SignInButton";
 
 export default function Header(): JSX.Element {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const router = useRouter();
-  const dropdownRef = useRef<HTMLDivElement>(null);
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setIsDropdownOpen(false);
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
 
   return (
     <div className="w-screen border-b border-gray-200 sticky top-0">
-      <nav className="bg-white w-full max-w-[1280px] mx-auto z-20 px-5">
+      <nav className="bg-white w-full mx-auto z-20 px-5">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <Link href="/" className="flex items-center">
             <img src="../favicon.ico" className="h-8 mr-3" alt="Logo" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap">
+            <span className="self-center text-[32px] font-semibold whitespace-nowrap">
               Cargo
             </span>
           </Link>
@@ -56,7 +34,11 @@ export default function Header(): JSX.Element {
               onClick={toggleMobileMenu}
             >
               <span className="sr-only">Open main menu</span>
-              {!isMobileMenuOpen ? <FaBars /> : <HiX />}
+              {!isMobileMenuOpen ? (
+                <FaBars className="text-[20px]" />
+              ) : (
+                <HiX className="text-[20px]" />
+              )}
             </button>
           </div>
 
@@ -64,83 +46,47 @@ export default function Header(): JSX.Element {
             className={`${
               isMobileMenuOpen ? "block" : "hidden"
             } items-center justify-between w-full md:flex md:w-auto top-12`}
-            // ${
-            //   isMobileMenuOpen ? "right-0 absolute" : ""
-            // }
             id="mobile-menu-2"
           >
-            <ul className="flex flex-col font-medium md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-2 lg:space-x-8 md:mt-0 md:border-0 md:bg-white">
+            <ul className="flex flex-col text-[20px] md:py-5 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-2 lg:space-x-8 md:mt-0 md:border-0">
               <li>
                 <Link
                   href="/"
-                  className="block py-2 pl-3 pr-4 tablets:px-2 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0"
+                  className="block py-2 px-1 tablets:px-2 text-white bg-blue-500 rounded md:bg-transparent md:text-blue-500 md:p-0 "
                   aria-current="page"
                 >
                   Нүүр
                 </Link>
               </li>
-              <li>
+              <li className="">
                 <Link
                   href="/about"
-                  className="block py-2 pl-3 pr-4  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
+                  className="block py-2 pl-3 pr-4  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
                 >
                   Бидний тухай
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#"
-                  className="block py-2 pl-3 pr-4 tablets:px-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
+                  href="/customer/tracking"
+                  className="block py-2 pl-3 pr-4  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
                 >
-                  Үйл ажиллагаа
+                  Ачаа шалгах
                 </Link>
               </li>
               <li>
-                <div className="relative" ref={dropdownRef}>
-                  <button
-                    type="button"
-                    className="block py-2 pl-3 pr-4 tablets:px-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
-                    id="user-menu-button"
-                    aria-expanded={isDropdownOpen}
-                    onClick={toggleDropdown}
-                  >
-                    <span className="sr-only">Open user menu</span>
-                    <div>
-                      Хэрэглэгчийн булан <FaAngleDown className="inline" />
-                    </div>
-                  </button>
-                  {/* <!-- Dropdown menu --> */}
-                  {isDropdownOpen && (
-                    <div
-                      className="z-20 absolute right-0 top-5 mt-2 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow"
-                      id="user-dropdown"
-                    >
-                      <ul className="py-2" aria-labelledby="user-menu-button">
-                        <li>
-                          <Link
-                            href="/customer/tracking"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                          >
-                            Ачаа шалгах
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/customer/help"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                          >
-                            Тусламж
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                  )}
-                </div>
+                <Link
+                  href="/customer/help"
+                  className="block py-2 pl-3 pr-4  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
+                >
+                  Тусламж
+                </Link>
               </li>
+
               <li>
                 <Link
                   href="#"
-                  className="block py-2 pl-3 pr-4 tablets:px-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
+                  className=" py-2 hidden pl-3 pr-4 tablets:px-2 lg:block text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
                 >
                   Холбоо барих
                 </Link>
@@ -148,7 +94,7 @@ export default function Header(): JSX.Element {
               <li>
                 <Link
                   href="/cargos"
-                  className="block py-2 pl-3 pr-4 tablets:px-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
+                  className="block py-2 pl-3 pr-4 tablets:px-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
                 >
                   Админ
                 </Link>

@@ -11,6 +11,7 @@ import {
   ChevronDoubleRightIcon,
 } from "@heroicons/react/24/outline";
 import { signOut } from "next-auth/react";
+import AdminProfile from "../profile";
 
 export default function AdminSideBar({ navItems = defaultNavItems }) {
   const [collapsed, setCollapsed] = useState(false);
@@ -21,16 +22,16 @@ export default function AdminSideBar({ navItems = defaultNavItems }) {
     <div>
       <nav
         className={classNames({
-          "bg-white text-zinc-500": true, // colors
+          "bg-indigo-700 text-white": true, // colors
           "flex items-center justify-between": true, // layout
-          "w-screen md:w-full sticky z-10 px-5 shadow-sm h-[73px] top-0 block md:hidden":
+          "w-screen md:w-full static z-0 px-5 shadow-sm h-[73px] top-0 block md:hidden":
             true, //positioning & styling
         })}
       >
         <div className="font-bold text-lg">Админы хуудас</div>
         <div className="flex-grow" />
         <button
-          className="block md:hidden bg-red-700"
+          className="block md:hidden text-white"
           onClick={() => {
             setShown(!shown);
           }}
@@ -40,7 +41,7 @@ export default function AdminSideBar({ navItems = defaultNavItems }) {
       </nav>
       <div
         className={classNames({
-          "bg-indigo-700 h-screen text-zinc-50 fixed md:static md:translate-x-0 z-20":
+          "bg-indigo-700 h-screen text-zinc-50 fixed md:sticky md:top-0 md:translate-x-0 z-20":
             true,
           "transition-all duration-300 ease-in-out": true,
           "w-[230px]": !collapsed,
@@ -56,7 +57,8 @@ export default function AdminSideBar({ navItems = defaultNavItems }) {
             "py-4 justify-center": collapsed,
           })}
         >
-          {!collapsed && <span className="whitespace-nowrap">My Logo</span>}
+          {/* {!collapsed && <span className="whitespace-nowrap">My Logo</span>} */}
+          {!collapsed && <AdminProfile />}
           <button
             className="grid place-content-center hover:bg-indigo-800 w-10 h-10 rounded-full opacity-0 md:opacity-100"
             onClick={() => setCollapsed(!collapsed)}

@@ -19,7 +19,7 @@ export default function DeleteButton({ id, onSuccess }: any) {
   }
   return (
     <button
-      className="font-medium text-blue-600  hover:underline"
+      className="font-medium text-red-400  hover:underline"
       onClick={handleClick}
     >
       Устгах
