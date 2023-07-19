@@ -1,9 +1,7 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { FaBars } from "react-icons/fa";
-import { FaAngleDown } from "react-icons/fa";
 import { HiX } from "react-icons/hi";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function Header(): JSX.Element {
@@ -48,17 +46,17 @@ export default function Header(): JSX.Element {
             } items-center justify-between w-full md:flex md:w-auto top-12`}
             id="mobile-menu-2"
           >
-            <ul className="flex flex-col text-[20px] md:py-5 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-2 lg:space-x-8 md:mt-0 md:border-0">
-              <li>
+            <ul className="flex flex-col text-[20px]  mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-2 lg:space-x-8 md:mt-0 md:border-0">
+              <li className="py-5 border-b-2 border-white hover:border-blue-300 hover:border-b-2">
                 <Link
                   href="/"
-                  className="block py-2 px-1 tablets:px-2 text-white bg-blue-500 rounded md:bg-transparent md:text-blue-500 md:p-0 "
+                  className="block px-1 tablets:px-2 text-white bg-blue-500 rounded md:bg-transparent md:text-blue-500 md:p-0 "
                   aria-current="page"
                 >
                   Нүүр
                 </Link>
               </li>
-              <li className="">
+              <li className="py-5 border-b-2 border-white hover:border-blue-300 hover:border-b-2">
                 <Link
                   href="/about"
                   className="block py-2 pl-3 pr-4  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
@@ -66,7 +64,7 @@ export default function Header(): JSX.Element {
                   Бидний тухай
                 </Link>
               </li>
-              <li>
+              <li className="py-5 border-b-2 border-white hover:border-blue-300 hover:border-b-2">
                 <Link
                   href="/customer/tracking"
                   className="block py-2 pl-3 pr-4  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
@@ -74,7 +72,7 @@ export default function Header(): JSX.Element {
                   Ачаа шалгах
                 </Link>
               </li>
-              <li>
+              <li className="py-5 border-b-2 border-white hover:border-blue-300 hover:border-b-2">
                 <Link
                   href="/customer/help"
                   className="block py-2 pl-3 pr-4  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
@@ -83,7 +81,7 @@ export default function Header(): JSX.Element {
                 </Link>
               </li>
 
-              <li>
+              <li className="py-5 border-b-2 border-white hover:border-blue-300 hover:border-b-2">
                 <Link
                   href="#"
                   className=" py-2 hidden pl-3 pr-4 tablets:px-2 lg:block text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
@@ -91,7 +89,7 @@ export default function Header(): JSX.Element {
                   Холбоо барих
                 </Link>
               </li>
-              <li>
+              <li className="py-5 border-b-2 border-white hover:border-blue-300 hover:border-b-2">
                 <Link
                   href="/cargos"
                   className="block py-2 pl-3 pr-4 tablets:px-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"

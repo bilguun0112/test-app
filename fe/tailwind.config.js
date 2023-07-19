@@ -13,6 +13,7 @@ module.exports = {
       'tablets': { 'min': '768px', 'max': '836px' },
       'tm': { 'max': '836px' }
     },
+
     keyframes: {
       showcontent: {
         from: {
@@ -36,7 +37,7 @@ module.exports = {
       "sidebar-collapsed": "64px auto", //for sidebar layout
     },
   },
-  plugins: [require('flowbite/plugin')],
+  plugins: [],
 }
 
 
