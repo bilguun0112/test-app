@@ -3,7 +3,7 @@ import CargoModel from "../models/cargo.model";
 
 export const createCargo = async (req: Request, res: Response) => {
   const data = req.body;
-  console.log(data);
+  // console.log(data);
   if (data) {
     const oldcargo = await CargoModel.findOne({
       order_number: data.order_number,
@@ -60,7 +60,7 @@ export const getCargoById = async (req: Request, res: Response) => {
 
 export const deleteCargo = async (req: Request, res: Response) => {
   const { id } = req.params;
-  console.log("Deleting Cargos", id);
+  // console.log("Deleting Cargos", id);
   try {
     await CargoModel.deleteOne({ _id: id });
     res.status(201).json({
@@ -76,7 +76,7 @@ export const deleteCargo = async (req: Request, res: Response) => {
 // Update cargo
 export const updateCargo = async (req: Request, res: Response) => {
   const { id } = req.params; // Get the cargo ID from request parameters
-  console.log(id);
+  // console.log(id);
   let {
     order_number,
     sender,
@@ -90,7 +90,7 @@ export const updateCargo = async (req: Request, res: Response) => {
     last_payment,
     payment_method,
   } = req.body; // Get updated data from request body
-  console.log(req.body);
+  // console.log(req.body);
 
   try {
     // Find the cargo by ID and update its name and status
@@ -137,7 +137,7 @@ export const getCargoByOrderNum = async (req: Request, res: Response) => {
     const cargo = await CargoModel.find({
       order_number: { $regex: new RegExp(String(term), "i") },
     });
-    console.log(cargo);
+    // console.log(cargo);
     if (cargo.length === 0) {
       res.status(400).json({
         success: false,

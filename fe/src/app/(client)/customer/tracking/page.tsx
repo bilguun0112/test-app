@@ -26,8 +26,8 @@ export default function TrackingPage(): JSX.Element {
     }
   }, [term]);
   return (
-    <div>
-      <div className="pt-20 w-full md:w-1/2 mx-auto">
+    <div className="h-[100vh] sm:h-[70vh] lg:h-[100vh]">
+      <div className="pt-20 w-full md:w-1/2 mx-auto ">
         <form onSubmit={handleSubmit}>
           <label
             htmlFor="default-search"

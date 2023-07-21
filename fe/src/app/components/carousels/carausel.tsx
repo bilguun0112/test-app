@@ -1,31 +1,31 @@
 "use client";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { useState } from "react";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import Link from "next/link";
 export default function Carausel() {
   const data = [
     {
       id: 2,
       imgUrl:
         "https://res.cloudinary.com/dne57yfdi/image/upload/v1689742820/cargo/slider-bg_yt9gmm.jpg",
-      desc: "Some beautiful roads cannot be discovered without getting loss.",
-      name: "EXPLORE NATURE",
+      desc: "Бид таны ачааг түргэн шуурхай найдвартай тээвэрлэнэ",
+      name: "Манай карго",
     },
-    {
-      id: 1,
-      imgUrl:
-        "https://res.cloudinary.com/dne57yfdi/image/upload/v1689742492/cargo/bernd-dittrich-mjhvx4CO6G8-unsplash_yprnjl.jpg",
-      desc: "Some beautiful roads cannot be discovered without getting loss.",
-      name: "EXPLORE NATURE",
-    },
+    // {
+    //   id: 1,
+    //   imgUrl:
+    //     "https://res.cloudinary.com/dne57yfdi/image/upload/v1689742492/cargo/bernd-dittrich-mjhvx4CO6G8-unsplash_yprnjl.jpg",
+    //   desc: "Бид таны ачааг түргэн шуурхай найдвартай тээвэрлэнэ",
+    //   name: "Манай карго",
+    // },
 
     {
       id: 3,
       imgUrl:
         "https://res.cloudinary.com/dne57yfdi/image/upload/v1689742485/cargo/wallpaperflare.com_wallpaper_srl1pe.jpg",
-      desc: "Some beautiful roads cannot be discovered without getting loss.",
-      name: "EXPLORE NATURE",
+      desc: "Бид таны ачааг түргэн шуурхай найдвартай тээвэрлэнэ",
+      name: "Манай карго",
     },
   ];
   return (
@@ -34,7 +34,7 @@ export default function Carausel() {
         useKeyboardArrows={true}
         autoPlay={true}
         infiniteLoop
-        interval={5000}
+        interval={8000}
         transitionTime={1000}
         showThumbs={false}
         showStatus={false}
@@ -79,6 +79,14 @@ export default function Carausel() {
               </div>
               <div className=" text-white text-[16px] px-3 md:px-5 md:text-[24px] mt-[20px]">
                 {item.desc}
+              </div>
+              <div className="mt-[20px]">
+                <Link
+                  className="text-white text-[24px] hover:text-gray-500 hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mt-8"
+                  href="/customer/tracking"
+                >
+                  Ачаа шалгах
+                </Link>
               </div>
             </div>
           </div>

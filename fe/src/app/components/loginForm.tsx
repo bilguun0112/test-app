@@ -4,23 +4,28 @@ import { useState } from "react";
 import { BiShow } from "react-icons/bi";
 import { BiHide } from "react-icons/bi";
 import { signIn } from "next-auth/react";
-
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(true);
   const [error, setError] = useState(false);
+
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
+
   async function handleSubmit(e: any) {
     e.preventDefault();
-    const res = await signIn("credentials", {
+    const formData = {
       email: e.target.email.value,
       password: e.target.password.value,
+    };
+    const res = await signIn("credentials", {
+      ...formData,
       callbackUrl: "/cargos",
     });
-    console.log(res);
+    // console.log(res);
     if (res?.error) return setError(true);
   }
+
   return (
     <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
       <div>

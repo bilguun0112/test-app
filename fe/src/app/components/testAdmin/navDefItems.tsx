@@ -4,6 +4,7 @@ import {
   FolderPlusIcon,
   UserPlusIcon,
   HomeIcon,
+  UserCircleIcon,
 } from "@heroicons/react/24/outline";
 // define a NavItem prop
 export type NavItem = {

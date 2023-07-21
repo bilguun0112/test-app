@@ -2,7 +2,7 @@
 
 import DeleteButton from "@/app/components/deleteButton";
 import Pagination from "@/app/components/pagination";
-import TableSetting from "@/app/components/tableSetting";
+import TableSetting2 from "@/app/components/tableSetting2";
 import ViewModal from "@/app/components/viewModal";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -160,7 +160,7 @@ export default function MainPage(): JSX.Element {
               />
             </div>
           </div>
-          <TableSetting
+          <TableSetting2
             method={method}
             setMethod={setMethod}
             payment={payment}

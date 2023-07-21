@@ -7,7 +7,7 @@ export default function ViewModal({ cargos }: any) {
 
   const handleToggleModal = () => {
     setShowModal(!showModal);
-    console.log("Modal clicked");
+    // console.log("Modal clicked");
   };
   const closeModal = () => {
     setShowModal(false);
@@ -43,29 +43,36 @@ export default function ViewModal({ cargos }: any) {
                     {cargos.order_number}
                   </td>
                 </tr>
-                <tr>
-                  <td className="border border-slate-600 pl-2 py-1">Илгээгч</td>
 
-                  <td className="border border-slate-600 pl-2 py-1">
-                    <tr>{cargos.sender}</tr>
-                    <tr>
-                      <td>{cargos.sender_number}</td>
-                    </tr>
+                <tr>
+                  <td className="border border-b-[#fafeff] border-t-slate-600 border-l-slate-600 border-r-slate-600 pl-2 py-1">
+                    Илгээгч
+                  </td>
+                  <td className="border border-b-[#fafeff] border-t-slate-600 border-l-slate-600 border-r-slate-600 pl-2 py-1">
+                    {cargos.sender}
                   </td>
                 </tr>
                 <tr>
+                  <td className="border border-slate-600 pl-2 py-1"></td>
                   <td className="border border-slate-600 pl-2 py-1">
+                    {cargos.sender_number}
+                  </td>
+                </tr>
+                <tr>
+                  <td className="border border-b-[#fafeff] border-t-slate-600 border-l-slate-600 border-r-slate-600 pl-2 py-1">
                     Хүлээн авагч
                   </td>
-                  <td className="border border-slate-600 pl-2 py-1">
-                    <tr>
-                      <td>{cargos.receiver}</td>
-                    </tr>
-                    <tr>
-                      <td>{cargos.receiver_number}</td>
-                    </tr>
+                  <td className="border border-b-[#fafeff] border-t-slate-600 border-l-slate-600 border-r-slate-600 pl-2 py-1">
+                    {cargos.receiver}
                   </td>
                 </tr>
+                <tr>
+                  <td className="border border-slate-600 pl-2 py-1"></td>
+                  <td className="border border-slate-600 pl-2 py-1">
+                    {cargos.receiver_number}
+                  </td>
+                </tr>
+
                 <tr>
                   <td className="border border-slate-600 pl-2 py-1">
                     Ачааны тэмдэглэл

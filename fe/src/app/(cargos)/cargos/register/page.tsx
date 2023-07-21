@@ -48,7 +48,7 @@ export default function Register(): JSX.Element {
     const formattedDateString = `${year}-${month}-${day}`;
 
     const formData = {
-      email: e.target.email.value,
+      email: e.target.email.value.toLowerCase(),
       first_name: e.target.firstName.value,
       last_name: e.target.lastName.value,
       password: e.target.password.value,
@@ -116,7 +116,7 @@ export default function Register(): JSX.Element {
                       name="first_name"
                       id="firstName"
                       className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  focus:border-primary-200 focus:border-5 block w-full p-2.5"
-                      placeholder="John"
+                      placeholder="Овог"
                       required
                     />
                   </div>
@@ -132,7 +132,7 @@ export default function Register(): JSX.Element {
                       name="last_name"
                       id="lastName"
                       className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  focus:border-primary-200 focus:border-5 block w-full p-2.5"
-                      placeholder="Wick"
+                      placeholder="Нэр"
                       required
                     />
                   </div>
@@ -212,15 +212,6 @@ export default function Register(): JSX.Element {
                 </button>
                 <div className="text-red-400">{warning}</div>
                 <div className="text-green-400">{done}</div>
-                <p className="text-sm font-light text-gray-500">
-                  Бүртгэлтэй хэрэглэгч бол?{" "}
-                  <Link
-                    href="#"
-                    className="font-medium text-primary-600 hover:underline"
-                  >
-                    Нэвтрэх
-                  </Link>
-                </p>
               </form>
             </div>
           </div>

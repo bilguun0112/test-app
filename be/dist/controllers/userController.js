@@ -9,9 +9,11 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const user_model_1 = __importDefault(require("../models/user.model"));
 const createUser = async (req, res) => {
     const data = req.body;
-    console.log(data);
+    // console.log(data);
     if (data) {
-        const oldUser = await user_model_1.default.findOne({ email: data.email });
+        const oldUser = await user_model_1.default.findOne({
+            email: data.email,
+        });
         if (oldUser) {
             return res.status(400).json({
                 success: false,
@@ -61,14 +63,14 @@ const getUserById = async (req, res) => {
         }
     }
     catch (error) {
-        res.status(404).json(error);
+        res.status(404).json({ success: false });
     }
 };
 exports.getUserById = getUserById;
 const deleteUser = async (req, res) => {
     const id = req.body.id;
-    console.log("Deleting User");
-    console.log(id);
+    // console.log("Deleting User");
+    // console.log(id);
     try {
         await user_model_1.default.deleteOne({ _id: id });
         const users = await user_model_1.default.find();
@@ -86,13 +88,11 @@ exports.deleteUser = deleteUser;
 // Update user
 const updateUser = async (req, res) => {
     const { id } = req.params; // Get the user ID from request parameters
-    console.log(id);
+    // console.log(id);
     let { first_name, last_name, email, phone_number, user_role_id, status, address, profile_img, } = req.body; // Get updated data from request body
-    console.log(req.body);
-    console.log(req.body);
     const existingUser = await user_model_1.default.findOne({ email: email.toLowerCase() });
     if (existingUser && existingUser.id !== id) {
-        console.log("Имэйл хаяг давтагдаж байна");
+        // console.log("Имэйл хаяг давтагдаж байна");
         return res.status(400).json({
             success: false,
             message: "Энэ имэйл хаяг бүртгэгдсэн байна.",
@@ -100,7 +100,7 @@ const updateUser = async (req, res) => {
     }
     const existingUser2 = await user_model_1.default.findOne({ phone_number: phone_number });
     if (existingUser2 && existingUser2.id !== id) {
-        console.log("Утасны дугаар давтагдаж байна");
+        // console.log("Утасны дугаар давтагдаж байна");
         return res.status(400).json({
             success: false,
             message: "Энэ утасны дугаар бүртгэгдсэн байна.",
@@ -135,14 +135,12 @@ exports.updateUser = updateUser;
 // ! Login
 const login = async (req, res) => {
     try {
-        const { email, password } = req.body;
-        console.log("email = " + email);
-        console.log("password = " + password);
+        const { email, password, remember_me } = req.body;
         if (!(email && password)) {
             return res.status(400).json({ message: "Утгуудыг бүрэн оруулна уу" });
         }
-        const user = await user_model_1.default.findOne({ email: email });
-        console.log(user);
+        const user = await user_model_1.default.findOne({ email: email.toLowerCase() });
+        // console.log(user);
         let isMatch = null;
         if (user && user.password && password !== undefined) {
             isMatch = await bcrypt_1.default.compare(password, user.password);
@@ -151,6 +149,7 @@ const login = async (req, res) => {
             const jwtBody = {
                 user_id: user._id,
                 email: email,
+                remember_me: remember_me,
             };
             const token = jsonwebtoken_1.default.sign(jwtBody, "Token send back", { expiresIn: "24h" });
             res.status(200).json({
@@ -163,7 +162,7 @@ const login = async (req, res) => {
             return;
         }
         else {
-            console.log("Нууц үг нэр таарахгүй байна");
+            // console.log("Нууц үг нэр таарахгүй байна");
             return res.status(400).json({
                 success: false,
                 message: "Нууц үг емайл таарахгүй байна",

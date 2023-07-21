@@ -5,9 +5,11 @@ import UserModel from "../models/user.model";
 
 export const createUser = async (req: Request, res: Response) => {
   const data = req.body;
-  console.log(data);
+  // console.log(data);
   if (data) {
-    const oldUser = await UserModel.findOne({ email: data.email });
+    const oldUser = await UserModel.findOne({
+      email: data.email,
+    });
     if (oldUser) {
       return res.status(400).json({
         success: false,
@@ -53,14 +55,14 @@ export const getUserById = async (req: Request, res: Response) => {
       res.status(200).json({ success: true, data: user });
     }
   } catch (error) {
-    res.status(404).json(error);
+    res.status(404).json({ success: false });
   }
 };
 
 export const deleteUser = async (req: Request, res: Response) => {
   const id = req.body.id;
-  console.log("Deleting User");
-  console.log(id);
+  // console.log("Deleting User");
+  // console.log(id);
   try {
     await UserModel.deleteOne({ _id: id });
     const users = await UserModel.find();
@@ -77,7 +79,7 @@ export const deleteUser = async (req: Request, res: Response) => {
 // Update user
 export const updateUser = async (req: Request, res: Response) => {
   const { id } = req.params; // Get the user ID from request parameters
-  console.log(id);
+  // console.log(id);
   let {
     first_name,
     last_name,
@@ -88,14 +90,11 @@ export const updateUser = async (req: Request, res: Response) => {
     address,
     profile_img,
   } = req.body; // Get updated data from request body
-  console.log(req.body);
-
-  console.log(req.body);
 
   const existingUser = await UserModel.findOne({ email: email.toLowerCase() });
 
   if (existingUser && existingUser.id !== id) {
-    console.log("Имэйл хаяг давтагдаж байна");
+    // console.log("Имэйл хаяг давтагдаж байна");
     return res.status(400).json({
       success: false,
       message: "Энэ имэйл хаяг бүртгэгдсэн байна.",
@@ -105,7 +104,7 @@ export const updateUser = async (req: Request, res: Response) => {
   const existingUser2 = await UserModel.findOne({ phone_number: phone_number });
 
   if (existingUser2 && existingUser2.id !== id) {
-    console.log("Утасны дугаар давтагдаж байна");
+    // console.log("Утасны дугаар давтагдаж байна");
     return res.status(400).json({
       success: false,
       message: "Энэ утасны дугаар бүртгэгдсэн байна.",
@@ -146,16 +145,14 @@ export const updateUser = async (req: Request, res: Response) => {
 // ! Login
 export const login = async (req: Request, res: Response) => {
   try {
-    const { email, password } = req.body;
-    console.log("email = " + email);
-    console.log("password = " + password);
+    const { email, password, remember_me } = req.body;
 
     if (!(email && password)) {
       return res.status(400).json({ message: "Утгуудыг бүрэн оруулна уу" });
     }
 
-    const user = await UserModel.findOne({ email: email });
-    console.log(user);
+    const user = await UserModel.findOne({ email: email.toLowerCase() });
+    // console.log(user);
 
     let isMatch = null;
 
@@ -167,6 +164,7 @@ export const login = async (req: Request, res: Response) => {
       const jwtBody = {
         user_id: user._id,
         email: email,
+        remember_me: remember_me,
       };
       const token = jwt.sign(jwtBody, "Token send back", { expiresIn: "24h" });
       res.status(200).json({
@@ -178,7 +176,7 @@ export const login = async (req: Request, res: Response) => {
       });
       return;
     } else {
-      console.log("Нууц үг нэр таарахгүй байна");
+      // console.log("Нууц үг нэр таарахгүй байна");
       return res.status(400).json({
         success: false,
         message: "Нууц үг емайл таарахгүй байна",
