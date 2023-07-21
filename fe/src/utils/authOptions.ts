@@ -10,16 +10,19 @@ export const authOptions: NextAuthOptions = {
         password: { label: "password" },
       },
       async authorize(credentials, req) {
-        const res = await fetch("http://localhost:8080/users/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: credentials?.email,
-            password: credentials?.password,
-          }),
-        });
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/login`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: credentials?.email,
+              password: credentials?.password,
+            }),
+          }
+        );
 
         const user = await res.json();
 
