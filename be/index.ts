@@ -7,8 +7,10 @@ import cors from "cors";
 import userRouter from "./routes/user.api";
 import cargoRouter from "./routes/cargo.api";
 const app = express();
-const PORT = process.env.PORT;
-const MONGO_CONNECTION_STRING: any = process.env.MONGO_CONNECTION_STRING;
+const PORT = process.env.PORT || 8080;
+const MONGO_CONNECTION_STRING: any =
+  process.env.MONGO_CONNECTION_STRING ||
+  "mongodb+srv://ruzishdee:123456789abc@cargo.6fokz5c.mongodb.net/Cargo_app";
 
 let name: string = "<h1>Ecommerce backend</h1>";
 
