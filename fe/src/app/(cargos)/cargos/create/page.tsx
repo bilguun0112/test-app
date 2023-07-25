@@ -45,8 +45,7 @@ export default function CreateOrder(): JSX.Element {
       payment_method: value,
       registration_date: formattedDateString,
       admin_id: session?.user.id,
-      start_date: e.target.start.value,
-      end_date: e.target.end.value,
+      admin_note: e.target.adminNote.value,
     };
     // console.log(formData);
     try {
@@ -259,40 +258,21 @@ export default function CreateOrder(): JSX.Element {
                       </select>
                     </div>
                   </div>
-                  <div className="flex justify-between gap-8 pb-4">
-                    <div className="w-full">
-                      <label
-                        htmlFor="startDate"
-                        className="block mb-2 text-sm font-medium text-gray-900"
-                      >
-                        Ачаа гарах :
-                      </label>
-                      <input
-                        name="start"
-                        id="start"
-                        type="date"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full pl-10 p-2.5  "
-                        placeholder="Ачаа гарах"
-                      />
-                    </div>
-                    <div className="w-full">
-                      <label
-                        htmlFor="endDate"
-                        className="block mb-2 text-sm font-medium text-gray-900"
-                      >
-                        Монголд буух :
-                      </label>
-                      <input
-                        name="end"
-                        type="date"
-                        id="end"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full pl-10 p-2.5  "
-                        placeholder="Монголд буух"
-                      />
-                    </div>
-                  </div>
                 </div>
-
+                <div className="py-2">
+                  <label
+                    htmlFor="adminNote"
+                    className="block mb-2 text-sm font-medium text-gray-900"
+                  >
+                    Админы тайлбар
+                  </label>
+                  <textarea
+                    name="adminNote"
+                    id="adminNote"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  focus:border-primary-200 focus:border-5 block w-full p-2.5"
+                    placeholder="Ачааны тухай мэдээлэл"
+                  />
+                </div>
                 <div className="flex gap-10 items-center">
                   <button
                     type="submit"

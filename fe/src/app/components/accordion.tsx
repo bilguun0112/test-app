@@ -27,13 +27,11 @@ export default function HelpComp() {
               open === 1 ? "text-blue-500 hover:!text-blue-700" : ""
             }`}
           >
-            What is Lorem Ipsum?
+            Хориглох ачаа
           </AccordionHeader>
           <AccordionBody className="text-base font-normal pt-0">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industrys standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book
+            Агаарын тээврээр тээвэрлэхийг хориглосон болон тээвэрлэгчээс
+            хориглосон аливаа бараа бүтээгдэхүүний тээвэрлэхгүй.
           </AccordionBody>
         </Accordion>
         <Accordion
@@ -46,31 +44,13 @@ export default function HelpComp() {
               open === 2 ? "text-blue-500 hover:!text-blue-700" : ""
             }`}
           >
-            Why do we use it?
+            Газрны ачааны зөвшөөрөгдөх хэмжээ
           </AccordionHeader>
           <AccordionBody className="text-base font-normal pt-0">
-            It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout. The point
-            of using.
-          </AccordionBody>
-        </Accordion>
-        <Accordion
-          open={open === 3}
-          className="border border-blue-gray-100 px-4 rounded-lg"
-        >
-          <AccordionHeader
-            onClick={() => handleOpen(3)}
-            className={`border-b-0 transition-colors ${
-              open === 3 ? "text-blue-500 hover:!text-blue-700" : ""
-            }`}
-          >
-            Where does it come from?
-          </AccordionHeader>
-          <AccordionBody className="text-base font-normal pt-0">
-            Contrary to popular belief, Lorem Ipsum is not simply random text.
-            It has roots in a piece of classical Latin literature from 45 BC,
-            making it over 2000 years old. Richard McClintock, a Latin professor
-            .
+            B2=500 см2 (Контайнер Өргөн) <br />
+            L2=500 см2 (Контайнер Урт) <br />
+            H2=500 см2 (Контайнер Өндөр) Жич: Дээрх хэмжээсээс илүү тээшийг
+            тохиролцоно.
           </AccordionBody>
         </Accordion>
       </Fragment>

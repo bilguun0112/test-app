@@ -39,6 +39,7 @@ const CargoSchema = new mongoose_1.Schema({
     payment_method: String,
     start_date: String,
     end_date: String,
+    admin_note: String,
     admin_id: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
 });
 const CargoModel = mongoose_1.default.model("Cargo", CargoSchema);

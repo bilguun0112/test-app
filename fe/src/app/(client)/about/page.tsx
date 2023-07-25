@@ -5,12 +5,12 @@ import React from "react";
 export default function AboutPage(): JSX.Element {
   return (
     <div className="my-auto">
-      <div className="text-[42px] text-center my-8">Каргоны нэр</div>
+      <div className="text-[42px] text-center my-8">Гэрэлтжин CO .,LTD</div>
       <div className="py-4 flex flex-col gap-4">
         <div>Эрхэм үйлчлүүлэгч танаа</div>
 
         <div>
-          Таныг шуурхай тээвэр каргоны вэб хуудсанд зочилсонд талархал
+          Таныг Гэрэлтжин Кореа каргоны вэб хуудсанд зочилсонд талархал
           илэрхийлье.
         </div>
 
@@ -28,7 +28,7 @@ export default function AboutPage(): JSX.Element {
           баяртай байна. Таньд ажлын өндөр амжилт, эрүүл энх, сайн сайхан
           бүхнийг чин сэтгэлийн угаас хүсэн ерөөе.
         </p>
-        <div>Хүндэтгэсэн, My friend company</div>
+        <div>Хүндэтгэсэн, Гэрэлтжин CO .,LTD company</div>
       </div>
     </div>
   );

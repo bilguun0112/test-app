@@ -147,6 +147,14 @@ export default function ViewModal({ cargos }: any) {
                     {cargos.end_date}
                   </td>
                 </tr>
+                <tr>
+                  <td className="border border-slate-600 pl-2 py-1">
+                    Админы хэсэг
+                  </td>
+                  <td className="border border-slate-600 pl-2 py-1">
+                    {cargos.admin_note}
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>

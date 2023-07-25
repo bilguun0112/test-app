@@ -17,8 +17,8 @@ export default function Header(): JSX.Element {
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <Link href="/" className="flex items-center">
             <img src="../favicon.ico" className="h-8 mr-3" alt="Logo" />
-            <span className="self-center text-[32px] font-semibold whitespace-nowrap">
-              Cargo
+            <span className="self-center text-[32px] whitespace-nowrap">
+              Гэрэлтжин
             </span>
           </Link>
 
@@ -83,7 +83,7 @@ export default function Header(): JSX.Element {
 
               <li className=" py-1 md:py-5 border-b-2 border-white hover:border-blue-300 hover:border-b-2">
                 <Link
-                  href="#"
+                  href="/contact"
                   className=" py-2 hidden pl-3 pr-4 tablets:px-2 lg:block text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
                 >
                   Холбоо барих

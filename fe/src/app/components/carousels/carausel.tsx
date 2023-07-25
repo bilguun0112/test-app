@@ -10,22 +10,14 @@ export default function Carausel() {
       imgUrl:
         "https://res.cloudinary.com/dne57yfdi/image/upload/v1689742820/cargo/slider-bg_yt9gmm.jpg",
       desc: "Бид таны ачааг түргэн шуурхай найдвартай тээвэрлэнэ",
-      name: "Манай карго",
+      name: "Гэрэлтжин CO .,LTD",
     },
-    // {
-    //   id: 1,
-    //   imgUrl:
-    //     "https://res.cloudinary.com/dne57yfdi/image/upload/v1689742492/cargo/bernd-dittrich-mjhvx4CO6G8-unsplash_yprnjl.jpg",
-    //   desc: "Бид таны ачааг түргэн шуурхай найдвартай тээвэрлэнэ",
-    //   name: "Манай карго",
-    // },
-
     {
       id: 3,
       imgUrl:
         "https://res.cloudinary.com/dne57yfdi/image/upload/v1689742485/cargo/wallpaperflare.com_wallpaper_srl1pe.jpg",
       desc: "Бид таны ачааг түргэн шуурхай найдвартай тээвэрлэнэ",
-      name: "Манай карго",
+      name: "Гэрэлтжин CO .,LTD",
     },
   ];
   return (

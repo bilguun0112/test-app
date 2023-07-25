@@ -16,6 +16,7 @@ const initialData = {
   registration_date: "",
   start_date: "",
   end_date: "",
+  admin_note: "",
 };
 export default function Page({ params }: { params: any }) {
   const URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/cargos/byId/${params.id}`;
@@ -64,6 +65,7 @@ export default function Page({ params }: { params: any }) {
       cargo_weight: e.target.cargoWeight.value,
       first_payment: e.target.cargoOrder.value,
       last_payment: e.target.cargoPayment.value,
+      admin_note: e.target.adminNote.value,
       payment_method: value,
     };
     console.log("formdata", formData);
@@ -329,6 +331,26 @@ export default function Page({ params }: { params: any }) {
                     {paymentMethod}
                   </select>
                 </div>
+              </div>
+              <div className="py-2">
+                <label
+                  htmlFor="adminNote"
+                  className="block mb-2 text-sm font-medium text-gray-900"
+                >
+                  Админы тайлбар
+                </label>
+                <textarea
+                  onChange={(e) => {
+                    setUserData({
+                      ...userData,
+                      admin_note: e.target.value,
+                    });
+                  }}
+                  name="adminNote"
+                  id="adminNote"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  focus:border-primary-200 focus:border-5 block w-full p-2.5"
+                  placeholder="Ачааны тухай мэдээлэл"
+                />
               </div>
               <div className="flex justify-between gap-8 pb-4">
                 <div className="w-full">

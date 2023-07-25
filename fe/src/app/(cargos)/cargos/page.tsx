@@ -17,6 +17,7 @@ export default function MainPage(): JSX.Element {
   const [payment, setPayment] = useState(false);
   const [startDate, setStartDate] = useState(true);
   const [endDate, setEndDate] = useState(true);
+  const [admin, setAdmin] = useState(true);
 
   const router = useRouter();
   const handleDeleteSuccess = () => {
@@ -59,16 +60,17 @@ export default function MainPage(): JSX.Element {
           <td className="px-3 py-3">{d.receiver}</td>
           <td className="px-3 py-4">{d.receiver_number}</td>
           <td className="px-3 py-4">{d.cargo_note}</td>
+          <td className={`px-3 py-3 ${method ? "hidden" : "block"}`}>
+            {d.payment_method}
+          </td>
           <td className="px-3 py-4">{d.first_payment}</td>
           <td className={`px-3 py-3 ${payment ? "hidden" : "block"}`}>
             {d.last_payment}
           </td>
-          <td className="px-3 py-4">{d.admin_id.first_name}</td>
 
-          <td className={`px-3 py-3 ${method ? "hidden" : "block"}`}>
-            {d.payment_method}
+          <td className={`px-3 py-3 ${admin ? "hidden" : "block"}`}>
+            {d.admin_id.first_name}
           </td>
-
           <td className="px-3 py-3">
             <div className="flex gap-4">
               <ViewModal cargos={d} />
@@ -109,16 +111,17 @@ export default function MainPage(): JSX.Element {
             <td className="px-3 py-3">{d.receiver}</td>
             <td className="px-3 py-4">{d.receiver_number}</td>
             <td className="px-3 py-4">{d.cargo_note}</td>
+            <td className={`px-3 py-3 ${method ? "hidden" : "block"}`}>
+              {d.payment_method}
+            </td>
             <td className="px-3 py-4">{d.first_payment}</td>
             <td className={`px-3 py-3 ${payment ? "hidden" : "block"}`}>
               {d.last_payment}
             </td>
-            <td className="px-3 py-4">{d.admin_id.first_name}</td>
 
-            <td className={`px-3 py-3 ${method ? "hidden" : "block"}`}>
-              {d.payment_method}
-            </td>
-
+            {/* <td className={`px-3 py-3 ${admin ? "hidden" : "block"}`}>
+              {d.admin_id.first_name}
+            </td> */}
             <td className="px-3 py-4">
               <div className="flex gap-4">
                 <ViewModal cargos={d} />
@@ -187,6 +190,12 @@ export default function MainPage(): JSX.Element {
                 <th scope="col" className="px-3 py-3">
                   Тайлбар
                 </th>
+                <th
+                  scope="col"
+                  className={`px-3 py-3 ${method ? "hidden" : "block"}`}
+                >
+                  Төрөл
+                </th>
                 <th scope="col" className="px-3 py-3">
                   Төлбөр
                 </th>
@@ -197,16 +206,6 @@ export default function MainPage(): JSX.Element {
                   Үлдэгдэл
                 </th>
 
-                <th scope="col" className="px-3 py-3">
-                  Ажилтан
-                </th>
-
-                <th
-                  scope="col"
-                  className={`px-3 py-3 ${method ? "hidden" : "block"}`}
-                >
-                  Төрөл
-                </th>
                 <th scope="col" className="px-3 py-3">
                   Үйлдэл
                 </th>

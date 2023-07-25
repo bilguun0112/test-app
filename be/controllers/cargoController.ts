@@ -89,6 +89,7 @@ export const updateCargo = async (req: Request, res: Response) => {
     first_payment,
     last_payment,
     payment_method,
+    admin_note,
   } = req.body; // Get updated data from request body
   // console.log(req.body);
 
@@ -108,6 +109,7 @@ export const updateCargo = async (req: Request, res: Response) => {
         first_payment,
         last_payment,
         payment_method,
+        admin_note,
       },
       { new: true }
     );

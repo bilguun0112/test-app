@@ -85,7 +85,7 @@ exports.deleteCargo = deleteCargo;
 const updateCargo = async (req, res) => {
     const { id } = req.params; // Get the cargo ID from request parameters
     // console.log(id);
-    let { order_number, sender, sender_number, receiver, receiver_number, cargo_note, cargo_count, cargo_weight, first_payment, last_payment, payment_method, } = req.body; // Get updated data from request body
+    let { order_number, sender, sender_number, receiver, receiver_number, cargo_note, cargo_count, cargo_weight, first_payment, last_payment, payment_method, admin_note, } = req.body; // Get updated data from request body
     // console.log(req.body);
     try {
         // Find the cargo by ID and update its name and status
@@ -101,6 +101,7 @@ const updateCargo = async (req, res) => {
             first_payment,
             last_payment,
             payment_method,
+            admin_note,
         }, { new: true });
         if (!updatedcargo) {
             // If cargo not found, return an error response

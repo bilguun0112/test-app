@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import {
   Menu,
   MenuHandler,
@@ -15,8 +14,6 @@ export default function TableSetting2({
   payment,
   setPayment,
 }: any) {
-  const [showModal, setShowModal] = useState(false);
-
   const handleCheckboxChange = () => {
     setMethod((prevChecked: boolean) => !prevChecked);
   };
@@ -62,6 +59,21 @@ export default function TableSetting2({
             </span>
           </label>
         </MenuItem>
+        {/* <MenuItem>
+          <label className="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              value=""
+              className="sr-only peer"
+              onChange={handleAdminCheckboxChange}
+              checked={admin}
+            />
+            <div className="w-9 h-5 bg-gray-200 peer-focus:outline-none  peer-focus:ring-blue-300  rounded-full peer  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600" />
+            <span className="ml-3 text-sm font-medium text-gray-900">
+              Ажилтан
+            </span>
+          </label>
+        </MenuItem> */}
       </MenuList>
     </Menu>
   );
